@@ -1,0 +1,31 @@
+[package]
+name = "wled_ambilight"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+fast_image_resize = "2.7.0"
+image = "0.24.6"
+log = "0.4.17"
+pix = "0.13.2"
+serde = { version = "1.0.159", features = ["derive"] }
+toml = "0.7.3"
+tray-item = "0.7.1"
+win_desktop_duplication = "0.10.6"
+
+[dependencies.windows]
+version = "0.39.0"
+features = [
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Graphics_Direct3D11",
+    "Win32_Graphics_Direct3D",
+    "Win32_Graphics_Dxgi",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_Graphics_Gdi",
+]
+
+[build-dependencies]
+windres = "0.2"
