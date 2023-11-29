@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::{fs, path::Path};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub enum WledType {
     Rgb = 2,
     Rgbw = 3,
@@ -72,20 +72,22 @@ impl Config {
     fn default() -> Self {
         Config {
             readme: r#"Total LED count = Horizontal + Vertical LEDs.
-For best experience try matching aspect ratio of your display: H/(V+2) ≈ 16/9. E.g. 27/(13+2) = 1.8 ≈ 1.77...
+For best experience try matching aspect ratio of your display: H/(V+2) ≈ 16/9.
 ┌──────────────────────────────────────┐
-│B-->         Horizontal LEDs          │
+│B →         Horizontal LEDs         ↓ │
 ├───┬──────────────────────────────┬───┤
-│ V │                              │ V │
-│ e │                              │ e │
-│ r │                              │ r │
-│ t │           Display            │ t │
-│ i │                              │ i │
-│ c │                              │ c │
-│ a │                              │ a │
-│ l │                              │ l │
+│ E │                              │   │
+│   │                              │ V │
+│ V │                              │ e │
+│ e │                              │ r │
+│ r │                              │ t │
+│ t │     Display (front screen)   │ i │
+│ i │                              │ c │
+│ c │                              │ a │
+│ a │                              │ l │
+│ l │                              │   │
 ├───┴──────────────────────────────┴───┤
-│E            Horizontal LEDs       <--│
+│ ↑          Horizontal LEDs         ← │
 └──────────────────────────────────────┘
 With enabled V-Sync max_fps is ignored.
 B is starting point (index 0), clock-wise indexing, until E (last index).
@@ -98,11 +100,11 @@ wled_type:
             gpu_index: 0,
             include_cursor: true,
             led_horizontal_count: 27,
-            led_vertical_count: 13,
+            led_vertical_count: 14,
             max_fps: 60,
             enable_v_sync: true,
             wled_type: WledType::Rgbw,
-            wled_ip: "192.168.1.150".to_string(),
+            wled_ip: "192.168.0.150".to_string(),
         }
     }
 }

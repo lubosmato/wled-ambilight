@@ -66,6 +66,7 @@ impl ColorSenderTask {
 
                         let mut wled_packet: Vec<u8> = Vec::new();
                         wled_packet.reserve(buffer.len() + 2);
+                        // TODO use wled_type and send RGB or RGBW based on that
                         wled_packet.extend_from_slice(&[3, 5]);
                         wled_packet.extend_from_slice(&buffer);
 

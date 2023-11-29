@@ -1,3 +1,5 @@
+// #![windows_subsystem = "windows"]
+
 mod color_sender_task;
 mod config;
 mod screen;

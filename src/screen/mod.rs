@@ -48,6 +48,7 @@ impl<'a> Screen<'a> {
         let display = adapter.get_display_by_idx(config.display_index).unwrap();
 
         // TODO solve HDR error
+        // TODO sometimes cursor error: Error Unexpected("failed to get DC for cursor image. Error { code: 0x887A0001, message: ...
         let mut dupl = DesktopDuplicationApi::new(adapter, display.clone()).unwrap();
         dupl.configure(DuplicationApiOptions {
             skip_cursor: !config.include_cursor,
